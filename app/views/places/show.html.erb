@@ -3,27 +3,17 @@
 <i><%= @place.address %></i>
 <br/><br/>
 <p><%= @place.description %></p>
-
-<style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    #map {
-      height: 300px;
-    }
-  </style>
+<% if @place.latitude.present? && @place.longitude.present? %>
   
   
   
   <script>
 
     function initMap() {
-      var myLatLng = {lat: -25.363, lng: 131.044};
+      var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
 
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
+        zoom: 12,
         center: myLatLng
       });
 
@@ -37,11 +27,15 @@
   </script>
 
   <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZtuwJGQkGuP-Z2_uvhCwnMvXisydhIrk=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAb6zwsrCYJkI9Awn_-7B8aIfrVNi5Y6yU&callback=initMap">
+  </script>
   div id="map"></div>
   </script>
 
   <div id="map"></div>
+  <% end %>
+
+  <br />
 
 <div class="float-right">
   <% if current_user && current_user == @place.user %>
@@ -51,3 +45,11 @@
     
   </div>
 </div>
+
+<div class="clear"></div>
+<%= simple_form_for @comment, url: '#' do |f| %>
+  <%= f.input :message %>
+  <%= f.input :rating %>
+  <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+<% end %> 
+
