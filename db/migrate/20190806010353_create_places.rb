@@ -1,14 +1,10 @@
-class CreateComments < ActiveRecord::Migration[5.2]
+class CreatePlaces < ActiveRecord::Migration[5.2]
   def change
-    create_table :comments do |t|
-      t.text :comment
-      t.integer :rating
-      t.integer :user_id
-      t.integer :place_id
+    create_table :places do |t|
+      t.string :name
+      t.text :description
+      t.string :address
       t.timestamps
     end
-
-    add_index :comments, [:user_id, :place_id]
-    add_index :comments, :place_id
   end
 end
