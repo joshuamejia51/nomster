@@ -1,8 +1,8 @@
-class CreatePlaces < ActiveRecord::Migration[5.2]
-   def change
+class CreateComments < ActiveRecord::Migration[5.2]
+  def change
     create_table :comments do |t|
-      t.text :message
-      t.string :rating
+      t.text :comment
+      t.integer :rating
       t.integer :user_id
       t.integer :place_id
       t.timestamps
