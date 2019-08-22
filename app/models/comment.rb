@@ -1,7 +1,6 @@
 class Comment < ApplicationRecord
-
   belongs_to :user
-  belongs_to :place 
+  belongs_to :place
 
   RATINGS = {
     'one star': '1_star',
@@ -11,4 +10,7 @@ class Comment < ApplicationRecord
     'five stars': '5_stars'
   }
 
+  def humanized_rating
+    RATINGS.invert[self.rating]
+  end
 end
