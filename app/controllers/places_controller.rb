@@ -63,5 +63,14 @@ if @place.user != current_user
     params.require(:place).permit(:name, :description, :address)
   end
 
+  def show
+  @place = Place.find(params[:id])
+  @comment = Comment.new
+end
+
+def show
+  @place = Place.find(params[:id])
+  @photo = photo.new
+end
 
 end
