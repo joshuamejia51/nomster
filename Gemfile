@@ -80,7 +80,7 @@ gem "figaro"
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.0.2'
 end
 
 
